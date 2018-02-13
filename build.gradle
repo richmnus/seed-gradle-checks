@@ -60,7 +60,7 @@ jacocoTestReport {
 
 // Checkstyle plugin config
 checkstyle {
-    toolVersion = '8.8'
+    toolVersion = '7.8.2'
 }
 
 // Checkstyle plugin config
