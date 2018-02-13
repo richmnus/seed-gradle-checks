@@ -8,7 +8,8 @@ apply plugin: 'java-library' // Works with Java plugin, for a library app that e
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'jacoco'
-apply plugin: "com.github.spotbugs"
+apply plugin: 'com.github.spotbugs'
+apply plugin: 'checkstyle'
 
 // Added for SpotBugs plugin
 buildscript {
@@ -55,6 +56,20 @@ jacocoTestReport {
         html.destination "${buildDir}/reports/jacoco"
     }
     executionData = files("${buildDir}/jacoco/test.exec")
+}
+
+// Checkstyle plugin config
+checkstyle {
+    toolVersion = '8.8'
+}
+
+// Checkstyle plugin config
+tasks.withType(Checkstyle) {
+    reports {
+        xml.enabled false
+        html.enabled true
+        // html.stylesheet resources.text.fromFile('config/xsl/checkstyle-custom.xsl')
+    }
 }
 
 sourceCompatibility = 1.8
